@@ -13,7 +13,9 @@
     "less": "^4.1.3",
     "tdesign-vue-next": "^1.0.4",
     "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue-draggable-next": "^2.1.1",
+    "vue-router": "^4.1.6",
+    "vuedraggable": "^4.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.0.0",
