@@ -11,6 +11,11 @@ const routes: RouteRecordRaw[] = [
     name: 'vuedraggable',
     component: () => import('@/pages/vuedraggable/index.vue'),
   },
+  {
+    path: '/slider-block',
+    name: 'slider-block',
+    component: () => import('@/pages/slider-block/index.vue'),
+  },
 ];
 
 const routeInstance = createRouter({ history: createWebHashHistory(), routes });

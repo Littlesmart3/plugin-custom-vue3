@@ -12,8 +12,8 @@
     >
       {{ i.infoMessage }}
       <br />
-      <a class="demo-card__item-link" :href="i.github">github</a>
-      <a class="demo-card__item-link" :href="i.website">官网</a>
+      <a v-if="i.github" class="demo-card__item-link" :href="i.github">github</a>
+      <a v-if="i.website" class="demo-card__item-link" :href="i.website">官网</a>
     </t-card>
   </div>
 </template>
@@ -31,6 +31,15 @@ const componentsList = [
     github: 'https://github.com/SortableJS/Vue.Draggable',
     website: 'https://sortablejs.github.io/Vue.Draggable/#/simple',
   },
+  {
+    key: 'slider-block',
+    bordered: false,
+    title: 'slider-block 片断滑块',
+    routePath: '/slider-block',
+    infoMessage: '自定义视频片断滑块',
+    github: undefined,
+    website: undefined,
+  },
 ];
 
 function handleClickCard(path: string) {
@@ -39,11 +48,17 @@ function handleClickCard(path: string) {
 </script>
 <style lang="less" scoped>
 .demo-card {
+  display: flex;
+  width: 100%;
   box-sizing: border-box;
   height: 100%;
   padding: 20px;
   background-color: var(--td-bg-color-container-hover);
   cursor: pointer;
+  :deep(.t-card) {
+    max-height: 200px;
+    margin: 20px;
+  }
   .demo-card__item-link {
     margin-right: 10px;
   }
