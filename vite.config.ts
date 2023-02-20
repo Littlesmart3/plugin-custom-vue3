@@ -4,6 +4,7 @@ import { join } from 'path';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
 import { TDesignResolver } from 'unplugin-vue-components/resolvers';
+import usePluginImport from 'vite-plugin-importer';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
     Components({
       resolvers: [TDesignResolver({ library: 'vue-next' })],
     }),
+    usePluginImport({ libraryName: 'ant-design-vue', libraryDirectory: 'es', style: 'css' }),
   ],
   resolve: {
     alias: [

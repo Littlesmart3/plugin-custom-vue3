@@ -40,6 +40,15 @@ const componentsList = [
     github: undefined,
     website: undefined,
   },
+  {
+    key: 'bxh-slider',
+    bordered: false,
+    title: '自定义滑块',
+    routePath: '/bxh-slider',
+    infoMessage: '自定义滑块',
+    github: undefined,
+    website: undefined,
+  },
 ];
 
 function handleClickCard(path: string) {

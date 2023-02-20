@@ -16,6 +16,11 @@ const routes: RouteRecordRaw[] = [
     name: 'slider-block',
     component: () => import('@/pages/slider-block/index.vue'),
   },
+  {
+    path: '/bxh-slider',
+    name: 'bxh-slider',
+    component: () => import('@/pages/bxh-slider/example.vue'),
+  },
 ];
 
 const routeInstance = createRouter({ history: createWebHashHistory(), routes });
