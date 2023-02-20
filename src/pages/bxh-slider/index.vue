@@ -18,7 +18,12 @@ interface IProps {
   height?: string;
 }
 
-const emit = defineEmits<(event: 'update:value', value: number) => void>();
+interface IEmits {
+  (e: 'update:value', value: number): void;
+  (e: 'error', msg: string): void;
+}
+
+const emit = defineEmits<IEmits>();
 
 const props = withDefaults(defineProps<IProps>(), {
   label: '长度',
@@ -62,8 +67,11 @@ function handleMouseEvent($event: MouseEvent) {
   const type = $event.type;
   // 鼠标按下事件
   if (type === 'mousedown') {
-    const changeValueVoid = (e: MouseEvent) => {
+    const onMousemove = (e: MouseEvent) => {
       activeProgressStatus.value = true;
+      changeValueVoid(e);
+    };
+    const changeValueVoid = (e: MouseEvent) => {
       const moveDistance = e.clientX - (sliderRef.value?.offsetLeft || 0);
       const offsetWidth = sliderRef.value?.offsetWidth || 0;
       const left = moveDistance < 0 ? 0 : moveDistance > offsetWidth ? offsetWidth : moveDistance;
@@ -75,7 +83,7 @@ function handleMouseEvent($event: MouseEvent) {
     const cleanEventListener = () => {
       activeProgressStatus.value = false;
       document.removeEventListener('mouseup', cleanEventListener);
-      document.removeEventListener('mousemove', changeValueVoid);
+      document.removeEventListener('mousemove', onMousemove);
     };
 
     // 单词点击事件
@@ -91,7 +99,7 @@ function handleMouseEvent($event: MouseEvent) {
     };
 
     sliderRef.value?.addEventListener('mouseup', onceClick);
-    document.addEventListener('mousemove', changeValueVoid);
+    document.addEventListener('mousemove', onMousemove);
   } else if (type === 'mouseover') {
     if (!activeProgressStatus.value) activeProgressStatus.value = true;
   } else if (type === 'mouseout') {
@@ -103,7 +111,14 @@ function handleMouseEvent($event: MouseEvent) {
 function handleChange($event: Event) {
   // 输入框change
   if ($event.type === 'input') {
-    const value = +($event.target as HTMLInputElement).value;
+    let value = +($event.target as HTMLInputElement).value;
+    if (value < props.min) {
+      value = props.min;
+      emit('error', `输入的值小于最小值`);
+    } else if (value > props.max) {
+      value = props.max;
+      emit('error', `输入的值大于最大值`);
+    }
     emit('update:value', value);
     valueTransform('valueToProgress', value);
   }
