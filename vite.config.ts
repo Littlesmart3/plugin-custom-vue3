@@ -18,6 +18,7 @@ export default defineConfig({
     }),
     usePluginImport({ libraryName: 'ant-design-vue', libraryDirectory: 'es', style: 'css' }),
   ],
+  base: './',
   resolve: {
     alias: [
       {
