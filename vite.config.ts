@@ -16,7 +16,6 @@ export default defineConfig({
     Components({
       resolvers: [TDesignResolver({ library: 'vue-next' })],
     }),
-    usePluginImport({ libraryName: 'ant-design-vue', libraryDirectory: 'es', style: 'css' }),
   ],
   base: './',
   resolve: {
