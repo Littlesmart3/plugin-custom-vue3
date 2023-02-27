@@ -7,10 +7,9 @@
       :title="i.title"
       :bordered="i.bordered"
       hover-shadow
-      :style="{ width: '300px' }"
       @click="handleClickCard(i.routePath)"
     >
-      {{ i.infoMessage }}
+      <div class="demo-card__item-info">{{ i.infoMessage }}</div>
       <br />
       <a v-for="index in i.tags" :href="index.url" target="_blank" @click.stop="handleTagHref">
         <t-tag class="demo-card__item-link" shape="round">{{ index.name }}</t-tag>
@@ -34,19 +33,29 @@ function handleTagHref() {
 <style lang="less" scoped>
 .demo-card {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   box-sizing: border-box;
-  height: 100%;
   padding: 20px;
-  background-color: var(--td-bg-color-container-hover);
   cursor: pointer;
   :deep(.t-card) {
     max-height: 200px;
     margin: 20px;
   }
-  .demo-card__item-link {
-    margin-right: 10px;
-    margin-top: 5px;
+  &__item {
+    width: 300px;
+    &-info {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      overflow: hidden;
+      -webkit-box-orient: vertical;
+    }
+    &-link {
+      margin-right: 10px;
+      margin-top: 5px;
+    }
   }
 }
 </style>

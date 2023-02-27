@@ -26,6 +26,16 @@ const routes: RouteRecordRaw[] = [
     name: 'gsap-case',
     component: () => import('@/pages/gsap-case/index.vue'),
   },
+  {
+    path: '/theatrejs',
+    name: 'theatrejs',
+    component: () => import('@/pages/theatrejs/example.vue'),
+  },
+  {
+    path: '/media-console',
+    name: 'media-console',
+    component: () => import('@/pages/time-line-new/example.vue'),
+  },
 ];
 
 const routeInstance = createRouter({ history: createWebHashHistory(), routes });

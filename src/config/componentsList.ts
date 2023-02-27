@@ -36,4 +36,24 @@ export const componentsList = [
       { name: '案例', url: 'https://codepen.io/collection/AQPByE' },
     ],
   },
+  {
+    key: 'theatrejs',
+    bordered: false,
+    title: 'theatrejs简单案例',
+    routePath: '/theatrejs',
+    infoMessage:
+      'Theatre.js 是一个带有专业动画设计工具集的 javascript 动画库。它可以帮助您创建任何动画，从 THREE.js 中的电影场景到令人愉悦的 UI 交互。',
+    tags: [
+      { name: 'github', url: 'https://github.com/theatre-js/theatre' },
+      { name: 'website', url: 'https://www.theatrejs.com/' },
+    ],
+  },
+  {
+    key: 'mediaConsole',
+    bordered: false,
+    title: '媒体控制台',
+    routePath: '/media-console',
+    infoMessage: '新版媒体控制台',
+    tags: [{ name: 'flexclip', url: 'https://www.flexclip.com/editor/app?ratio=landscape' }],
+  },
 ];
