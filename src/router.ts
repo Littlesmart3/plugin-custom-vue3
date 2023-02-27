@@ -34,7 +34,7 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/media-console',
     name: 'media-console',
-    component: () => import('@/pages/time-line-new/example.vue'),
+    component: () => import('@/pages/media-console/example.vue'),
   },
 ];
 

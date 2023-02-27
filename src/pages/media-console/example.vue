@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { handleError, ref } from 'vue';
-import TimeLineNew from './index.vue';
+import MediaConsole from './index.vue';
 </script>
 <template>
   <div class="layout">
-    <TimeLineNew />
+    <MediaConsole />
   </div>
 </template>
 
