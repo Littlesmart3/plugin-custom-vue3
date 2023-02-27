@@ -12,47 +12,23 @@
     >
       {{ i.infoMessage }}
       <br />
-      <a v-if="i.github" class="demo-card__item-link" :href="i.github">github</a>
-      <a v-if="i.website" class="demo-card__item-link" :href="i.website">官网</a>
+      <a v-for="index in i.tags" :href="index.url" target="_blank" @click.stop="handleTagHref">
+        <t-tag class="demo-card__item-link" shape="round">{{ index.name }}</t-tag>
+      </a>
     </t-card>
   </div>
 </template>
 <script lang="ts" setup>
-import { reactive } from 'vue';
 import { useRouter } from 'vue-router';
+import { componentsList } from '@/config/componentsList';
 const router = useRouter();
-const componentsList = [
-  {
-    key: 'Vue.Draggable',
-    bordered: false,
-    title: 'Vue.Draggable',
-    routePath: '/vuedraggable',
-    infoMessage: 'Vue.Draggable - 基于 Vue.js 丝般柔滑的拖拽排序组件',
-    github: 'https://github.com/SortableJS/Vue.Draggable',
-    website: 'https://sortablejs.github.io/Vue.Draggable/#/simple',
-  },
-  {
-    key: 'slider-block',
-    bordered: false,
-    title: 'slider-block 片断滑块',
-    routePath: '/slider-block',
-    infoMessage: '自定义视频片断滑块',
-    github: undefined,
-    website: undefined,
-  },
-  {
-    key: 'bxh-slider',
-    bordered: false,
-    title: '自定义滑块',
-    routePath: '/bxh-slider',
-    infoMessage: '自定义滑块',
-    github: undefined,
-    website: undefined,
-  },
-];
 
 function handleClickCard(path: string) {
   router.push({ path: path });
+}
+
+function handleTagHref() {
+  return;
 }
 </script>
 <style lang="less" scoped>
@@ -70,6 +46,7 @@ function handleClickCard(path: string) {
   }
   .demo-card__item-link {
     margin-right: 10px;
+    margin-top: 5px;
   }
 }
 </style>

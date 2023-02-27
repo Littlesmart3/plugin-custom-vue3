@@ -21,6 +21,11 @@ const routes: RouteRecordRaw[] = [
     name: 'bxh-slider',
     component: () => import('@/pages/bxh-slider/example.vue'),
   },
+  {
+    path: '/gsap-case/:demoId',
+    name: 'gsap-case',
+    component: () => import('@/pages/gsap-case/index.vue'),
+  },
 ];
 
 const routeInstance = createRouter({ history: createWebHashHistory(), routes });
