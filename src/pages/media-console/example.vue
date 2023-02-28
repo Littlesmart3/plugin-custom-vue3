@@ -1,16 +1,24 @@
 <script lang="ts" setup>
-import { handleError, ref } from 'vue';
+import { computed, ref } from 'vue';
 import MediaConsole from './index.vue';
+
+const containerRef = ref<HTMLElement>();
 </script>
 <template>
   <div class="layout">
-    <MediaConsole />
+    <div ref="containerRef" class="container">
+      <MediaConsole v-if="containerRef" :containerRef="containerRef" />
+    </div>
   </div>
 </template>
 
 <style scoped lang="less">
 .layout {
-  background-color: #131519;
   color: #fff;
+  background-color: #31363f;
+  .container {
+    width: 1000px;
+    overflow: auto;
+  }
 }
 </style>
